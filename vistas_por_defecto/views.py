@@ -4,22 +4,24 @@ from django.urls import reverse
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django import forms
+from .models import Libro
+
 
 class CrearLibro(SuccessMessageMixin,CreateView):
-    model= libros
-    form= libros
+    model= Libro
+    form= Libro
     fields = "__all__"
     success_message = 'Libro Creado Correctamente !'
 
-class ListarLibros(ListViews):
-    model = libros
+class ListarLibro(ListView):
+    model = Libro
 
 class DetalleLibro(DetailView):
-    model = libros
+    model = Libro
 
-class ActualizarLibros(SuccessMessageMixin,UpdateView):
-    model= libros
-    form= libros
+class ActualizarLibro(SuccessMessageMixin,UpdateView):
+    model= Libro
+    form= Libro
     fields = "__all__"
     success_message = 'Libro Actualizado Correctamente !'
 
@@ -27,8 +29,8 @@ class ActualizarLibros(SuccessMessageMixin,UpdateView):
         return reverse('leer')
 
 class EliminarLibro(SuccessMessageMixin,CreateView):
-    model= libros
-    form= libros
+    model= Libro
+    form= Libro
     fields = "__all__"
 
     def get_success_url(self):

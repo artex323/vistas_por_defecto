@@ -16,14 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from vistas_por_defecto.views import ListarLibros,DetalleLibro,ActualizarLibros,CrearLibro,EliminarLibro
+from vistas_por_defecto.views import ListarLibro,DetalleLibro,ActualizarLibro,CrearLibro,EliminarLibro
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('listar/',ListarLibros.as_view(template_name = "index.html"), name= 'leer'),
+    path('listar/',ListarLibro.as_view(template_name = "listar.html"), name= 'leer'),
     path('detalle/ <int:pk>/', DetalleLibro.as_view(template_name ="detalles.html"),name='detalles'),
     path('crear/',CrearLibro.as_view(template_name = "crear.html"), name= 'crear'),
-    path('editar/ <int:pk>/', ActualizarLibros.as_view(template_name ="actualizar.html"),name='actualizar'),
+    path('editar/ <int:pk>/', ActualizarLibro.as_view(template_name ="actualizar.html"),name='actualizar'),
     path('eliminar/ <int:pk>/', EliminarLibro.as_view(template_name ="eliminar.html"),name='eliminar'),
 
 ]
